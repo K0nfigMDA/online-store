@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../header/header';
+import Footer from '../footer/footer';
 
 import {Routes, Route} from 'react-router-dom';
 import CartPage from '../../pages/cart';
@@ -16,6 +17,7 @@ function App() {
         <Route path='/cart' element={ < CartPage /> }></Route>
         <Route path='/product-details' element={ < ProductDetails /> }></Route>
       </Routes>
+			<Footer/>
     </>
   );
 }
