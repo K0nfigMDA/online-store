@@ -18,8 +18,11 @@
 	display: flex;
 	align-items: center;
 	font-size: 30px;
-	
+	color: orange;
+	text-decoration: none;
 }
+
+a { text-decoration: none; }
 
 .header__logo-img{
 	border-radius: 50%;
@@ -32,9 +35,6 @@
 	box-shadow: 0 0 10px rgba(184, 24, 24, 0.5), 0 0 20px rgba(184, 24, 24, 0.5), 0 0 30px rgba(184, 24, 24, 0.5), 0 0 40px rgba(184, 24, 24, 0.5);
 }
 
-.header__cart-total{
-
-}
 
 .header__cart-img{
 	width: 50px;

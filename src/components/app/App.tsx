@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateHeader from '../header/header';
+import Header from '../header/header';
 
 import {Routes, Route} from 'react-router-dom';
 import CartPage from '../../pages/cart';
@@ -10,7 +10,7 @@ import ProductDetails from '../../pages/productDetails';
 function App() {
   return (
 		<>
-			<CreateHeader/>
+			<Header/>
       <Routes>
         <Route path='/' element={ < MainStore /> }></Route>
         <Route path='/cart' element={ < CartPage /> }></Route>

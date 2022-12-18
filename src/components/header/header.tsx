@@ -1,23 +1,31 @@
-import React from 'react';
+import { useState } from 'react';
+import {Link} from 'react-router-dom'
 import './header.scss'
 
-function CreateHeader() {
+function Header() {
+const [productCount, setProductCount] =	useState(0)
+const [moneyAmount, setMoneyAmount] =	useState(0)
+
+
   return (
 		<header className='header'>
-			<div className='header__logo'>
+			<Link to={"/"}><div className='header__logo'>
 				<div className='header__logo-img'></div>
 				<span>Online Store</span>
 			</div>
+			</Link>
 			<div className='header__cart-total'>
-				Cart total
+				Cart total: € {moneyAmount}
 			</div>
 			<div className='header__cart-img'>
+				<Link to={"/cart"}>
 				<div className='header__cart-number'>
-					0
+					{productCount}
 				</div>
+				</Link>
 			</div>
 		</header>
   );
 }
 
-export default CreateHeader;
+export default Header;
