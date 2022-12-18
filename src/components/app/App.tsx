@@ -1,11 +1,12 @@
 import React from 'react';
+import CreateHeader from '../header/header';
 
 
 
 function App() {
   return (
-		<h1></h1>
-  );
+		<CreateHeader/>
+  )
 }
 
 export default App;
