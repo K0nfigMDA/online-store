@@ -1,14 +1,18 @@
-import { useProducts } from "../../hooks/useProducts";
 import Product from "../product/product";
 import './productsContainer.scss';
 import { useSearchParams } from "react-router-dom";
+import { IProduct } from "../../interfaces/products";
 
 interface IQueryStringOptions {
   [key: string]: string[] | undefined;
 }
 
-export default function ProductsContainer() {
-  const {products, error} = useProducts();
+interface IProductContainerProps {
+  products: IProduct[];
+  error: string;
+}
+
+export default function ProductsContainer({products, error}: IProductContainerProps) {
   const [searchParams] = useSearchParams();
   
   const queryParams: IQueryStringOptions = {};
