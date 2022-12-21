@@ -12,6 +12,7 @@ export default function FiltersContainer({products}: IFiltersContainerProps) {
       <FilterList filterName="category" products={products}/>
       <FilterList filterName="brand" products={products}/>
       <FilterDualSlider filterName="price" products={products}/>
+      <FilterDualSlider filterName="stock" products={products}/>
     </div>
   );
 }

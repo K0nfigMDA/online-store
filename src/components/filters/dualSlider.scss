@@ -1,6 +1,24 @@
+.dual-slider {
+  border: 1px solid orange;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 5%;
+  padding-bottom: 7%;
+}
+
+.out-data {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.multi-range {
+  position: relative;
+}
+
 .slider {
   position: relative;
-  width: 200px;
+  width: 100%;
 }
 
 .slider__track,
@@ -29,10 +47,11 @@
 }
 
 .thumb {
+  display: inline-block;
   pointer-events: none;
   position: absolute;
   height: 0;
-  width: 200px;
+  width: 100%;
   outline: none;
 }
 
