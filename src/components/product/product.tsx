@@ -1,3 +1,4 @@
+import { useCart } from "../../contexts/cart/cartContext";
 import { IProduct } from "../../interfaces/products";
 import './product.scss';
 
@@ -6,6 +7,18 @@ interface IProductProps {
 }
 
 export default function Product({ product }: IProductProps) {
+  const { cart, addToCart, removeFromCart } = useCart();
+
+  const inCart = cart.find(el => el.id === product.id);
+
+  const addHandler = () => {
+    addToCart(product);
+  }
+
+  const removeHandler = () => {
+    removeFromCart(product);
+  }
+
   return (
     <div className="product-item">
       <div className="item-wrapper" style={{background: `url(${product.thumbnail}) 0% 0% / cover`}}>
@@ -23,7 +36,8 @@ export default function Product({ product }: IProductProps) {
           </div>
         </div>
         <div className="item-buttons">
-          <button className="button">DROP FROM CART</button>
+          {inCart && <button className="button" onClick={removeHandler}>DROP FROM CART</button>}
+          {!inCart && <button className="button" onClick={addHandler}>ADD TO CART</button>}
           <button className="button">DETAILS</button>
         </div>
       </div>
