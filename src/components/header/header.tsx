@@ -1,11 +1,12 @@
-import { useState } from 'react';
 import {Link} from 'react-router-dom'
+import { useCart } from '../../contexts/cart/cartContext';
 import './header.scss'
 
 function Header() {
-const [productCount, setProductCount] =	useState(0)
-const [moneyAmount, setMoneyAmount] =	useState(0)
+	const { cart } = useCart();
 
+	const cartSum = () => cart.reduce((acc, el) => acc + el.quantity * el.price, 0);
+	const cartQuantity = () => cart.reduce((acc, el) => acc + el.quantity, 0);
 
   return (
 		<header className='header'>
@@ -15,12 +16,12 @@ const [moneyAmount, setMoneyAmount] =	useState(0)
 			</div>
 			</Link>
 			<div className='header__cart-total'>
-				Cart total: € {moneyAmount}
+				Cart total: € {cartSum()}
 			</div>
 			<div className='header__cart-img'>
 				<Link to={"/cart"}>
 				<div className='header__cart-number'>
-					{productCount}
+					{cartQuantity()}
 				</div>
 				</Link>
 			</div>
