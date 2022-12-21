@@ -11,3 +11,7 @@ export interface IProduct {
     thumbnail: string,
     images: string[]   
 }
+
+export interface IProductCart extends IProduct {
+    quantity: number;
+}
