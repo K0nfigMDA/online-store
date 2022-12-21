@@ -1,4 +1,5 @@
 import { IProduct } from "../../interfaces/products";
+import FilterDualSlider from "./dualSlider";
 import FilterList from "./filterList";
 
 interface IFiltersContainerProps {
@@ -10,6 +11,7 @@ export default function FiltersContainer({products}: IFiltersContainerProps) {
     <div className="filters">
       <FilterList filterName="category" products={products}/>
       <FilterList filterName="brand" products={products}/>
+      <FilterDualSlider filterName="price" products={products}/>
     </div>
   );
 }

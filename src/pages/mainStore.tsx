@@ -7,9 +7,9 @@ export default function MainStore() {
   const {products, error} = useProducts();
 
   return (
-    <div className="store-page">
+    <main className="store-page">
       <FiltersContainer products={products}/>
       <ProductsContainer products={products} error={error}/>
-    </div>
+    </main>
   );
 }
