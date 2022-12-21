@@ -3,6 +3,7 @@ import ProductsContainer from "../components/products-container/productsContaine
 import { useProducts } from "../hooks/useProducts";
 import './mainStore.scss';
 
+
 export default function MainStore() {
   const {products, error} = useProducts();
 
