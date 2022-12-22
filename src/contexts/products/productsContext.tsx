@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { SORT_OPTIONS, SORT_PARAM } from '../../components/sort/sortSelect';
 import { useFetchedProducts } from '../../hooks/useProducts';
 import { IProduct } from '../../interfaces/products';
 
@@ -38,38 +39,54 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
       queryParams[k] = v.split('↕');
     })
 
-    setFilteredProducts(allProducts.filter((prod) => {
-        const inCategory = queryParams.category 
-        ? queryParams.category.some(el => el.toLowerCase() === prod.category.toLowerCase())
-        : true;
+    const newProducts = allProducts.filter((prod) => {
+      const inCategory = queryParams.category 
+      ? queryParams.category.some(el => el.toLowerCase() === prod.category.toLowerCase())
+      : true;
 
-        const inBrand = queryParams.brand 
-        ? queryParams.brand.some(el => el.toLowerCase() === prod.brand.toLowerCase())
-        : true;
+      const inBrand = queryParams.brand 
+      ? queryParams.brand.some(el => el.toLowerCase() === prod.brand.toLowerCase())
+      : true;
 
-        const inPrice = queryParams.price 
-        ? (
-          prod.price >= Number(queryParams.price[0]) &&
-          prod.price <= Number(queryParams.price[1])
-          )
-        : true;
+      const inPrice = queryParams.price 
+      ? (
+        prod.price >= Number(queryParams.price[0]) &&
+        prod.price <= Number(queryParams.price[1])
+        )
+      : true;
 
-        const inStock = queryParams.stock 
-        ? (
-          prod.stock >= Number(queryParams.stock[0]) &&
-          prod.stock <= Number(queryParams.stock[1])
-          )
-        : true;
+      const inStock = queryParams.stock 
+      ? (
+        prod.stock >= Number(queryParams.stock[0]) &&
+        prod.stock <= Number(queryParams.stock[1])
+        )
+      : true;
 
-        return (inCategory && inBrand && inPrice && inStock);
-      })
-    )
+      return (inCategory && inBrand && inPrice && inStock);
+    });
+    return newProducts;
+  }, []);
+
+  const sortProducts = useCallback((products: IProduct[], searchParams: URLSearchParams) => {
+    const sortParam = searchParams.get(SORT_PARAM);
+    if (!sortParam) return products;
+    if (!SORT_OPTIONS.includes(sortParam)) return products;
+
+    const sortParamArr = sortParam.split('-');
+    const sortBy = sortParamArr[0] as keyof IProduct;
+    const sortOrder = sortParamArr[1];
+    if (sortOrder === 'ASC') {
+      return [...products].sort((a, b) => (a[sortBy] as number) - (b[sortBy] as number));
+    } else {
+      return [...products].sort((a, b) => (b[sortBy] as number) - (a[sortBy] as number));
+    }
   }, []);
 
   useEffect(() => {
-    filterProducts(allProducts, searchParams);
-    
-  }, [allProducts, searchParams, filterProducts]);
+    const newProductsFiltered = filterProducts(allProducts, searchParams);
+    const newProducts = sortProducts(newProductsFiltered, searchParams);
+    setFilteredProducts(newProducts);    
+  }, [allProducts, searchParams, filterProducts, sortProducts]);
   
   return (
     <ProductsContext.Provider value={{
