@@ -1,18 +1,17 @@
-import { IProduct } from "../../interfaces/products";
+import { useProducts } from "../../contexts/products/productsContext";
 import FilterDualSlider from "./dualSlider";
 import FilterList from "./filterList";
 
-interface IFiltersContainerProps {
-  products: IProduct[];
-}
 
-export default function FiltersContainer({products}: IFiltersContainerProps) {
+export default function FiltersContainer() {
+  const { allProducts } = useProducts();
+
   return (
     <div className="filters">
-      <FilterList filterName="category" products={products}/>
-      <FilterList filterName="brand" products={products}/>
-      <FilterDualSlider filterName="price" products={products}/>
-      <FilterDualSlider filterName="stock" products={products}/>
+      <FilterList filterName="category" products={allProducts}/>
+      <FilterList filterName="brand" products={allProducts}/>
+      <FilterDualSlider filterName="price" products={allProducts}/>
+      <FilterDualSlider filterName="stock" products={allProducts}/>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { IProduct } from '../interfaces/products';
 import { IResponseData } from "../interfaces/response";
 
 
-export function useProducts() {
+export function useFetchedProducts() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [error, setError] = useState('');
 
