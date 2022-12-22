@@ -7,6 +7,7 @@ import ProductDetails from '../../pages/productDetails';
 import { CartProvider } from '../../contexts/cart/cartContext';
 
 
+
 function App() {
   return (
 		<>
