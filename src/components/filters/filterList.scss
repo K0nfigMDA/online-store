@@ -1,0 +1,24 @@
+
+.filter-list {
+  border: 1px solid orange;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 5%;
+}
+
+.filter-title {
+  text-align: center;
+  background-color: #181a1c;
+  color: white;
+  border-bottom: 1px solid orange;
+}
+
+.filter-list__items {
+  max-height: 10rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.checkbox-line {
+  white-space: nowrap;
+}
