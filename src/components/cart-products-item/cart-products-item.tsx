@@ -6,13 +6,15 @@ import { useState } from 'react';
  
 interface CartProductsItemProps {
    product: IProductCart;
+	 num: number;
 }
 
 
 
-export default function CartProductsItem({product}: CartProductsItemProps) {
+export default function CartProductsItem({product, num}: CartProductsItemProps) {
    const { removeFromCart, addToCart, removeItemFromCart } = useCart();
 	 const [price, setPrice] = useState(product.price)
+	 
 	 
 
 	 
@@ -33,7 +35,7 @@ export default function CartProductsItem({product}: CartProductsItemProps) {
 
    return (
       <div className="products__item">
-         <div className="item__num"></div>
+         <div className="item__num">{num}</div>
 				 <img src={product.thumbnail} alt="product" className="item__image"/>
          <div className="item__content _content">
             <div className="content__title">{product.title}</div>

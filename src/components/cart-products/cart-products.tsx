@@ -22,7 +22,7 @@ export default function CartProducts() {
             </div>
          </div>
          <div className="products__body">
-					{cart.map(el => <CartProductsItem product={el} key = {el.id}/>)}
+					{cart.map((el, index) => <CartProductsItem product={el} key = {el.id} num = {index + 1}/>)}
 				 </div>
       </div>
    );
