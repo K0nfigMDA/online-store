@@ -9,12 +9,14 @@ interface ICartContext {
   cart: IProductCart[];
   addToCart: (product: IProduct) => void;
   removeFromCart: (product: IProduct) => void;
+	removeItemFromCart: (product: IProduct) => void;
 }
 
 const CartContext = React.createContext<ICartContext>({
   cart: [], 
   addToCart: () => console.error('NoProviderValue'),
-  removeFromCart: () => console.error('NoProviderValue')
+  removeFromCart: () => console.error('NoProviderValue'),
+	removeItemFromCart: () => console.error('NoProviderValue')
 });
 
 export const useCart = () => {
@@ -33,18 +35,30 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
     });
   }
 
+	const removeItemFromCart = (product: IProduct) => {
+    setCart((prev) => {
+      const inCartEl = prev.find(el => el.id === product.id);
+      if (!inCartEl) return [...prev, {...product, quantity: 1}];
+      inCartEl.quantity -= 1;
+      return [...prev];
+    });
+  }
+
   const removeFromCart = (product: IProduct) => {
     setCart((prev) => {
       const newCart = [...prev];
       return newCart.filter((el) => el.id !== product.id);
     })
   }
+
+	
   
   return (
     <CartContext.Provider value={{
       cart,
       addToCart,
       removeFromCart,
+			removeItemFromCart,
     }}>
       {children}
     </CartContext.Provider>

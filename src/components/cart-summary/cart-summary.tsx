@@ -1,5 +1,5 @@
 import './cart-summary.scss'
-
+import { useCart } from '../../contexts/cart/cartContext';
 
 export default function CartSummary() {
 	return (
