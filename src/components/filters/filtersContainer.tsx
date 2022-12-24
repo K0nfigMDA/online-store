@@ -8,8 +8,8 @@ export default function FiltersContainer() {
 
   return (
     <div className="filters">
-      <FilterList filterName="category" products={allProducts}/>
-      <FilterList filterName="brand" products={allProducts}/>
+      <FilterList filterName="category"/>
+      <FilterList filterName="brand"/>
       <FilterDualSlider filterName="price" products={allProducts}/>
       <FilterDualSlider filterName="stock" products={allProducts}/>
     </div>

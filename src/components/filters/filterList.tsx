@@ -1,16 +1,21 @@
 import { FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useProducts } from "../../contexts/products/productsContext";
 import { IProduct } from "../../interfaces/products";
 import './filterList.scss';
 
 interface IFilterListProps {
-  filterName: string;
-  products: IProduct[];
+  filterName: keyof IProduct;
 }
 
-export default function FilterList({ filterName, products }: IFilterListProps) { 
+interface IFilterItemProps {
+  item: string;
+}
+
+export default function FilterList({ filterName }: IFilterListProps) { 
+  const { allProducts, filteredProducts } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
-  const items = new Set(products.map(el => el[filterName as keyof IProduct] as string));
+  const items = new Set(allProducts.map(el => el[filterName as keyof IProduct] as string));
 
   function checkBoxHandler(e: FormEvent) {
     const target = e.target as HTMLInputElement;
@@ -48,17 +53,30 @@ export default function FilterList({ filterName, products }: IFilterListProps) {
     }
   }
 
+  function countProducts(products: IProduct[], searchField: string) {
+    const filtered = products.filter((el) => el[filterName] === searchField);
+    return filtered.length;
+  }
+
+  function Item({ item }: IFilterItemProps) {
+    const allCount = countProducts(allProducts, item);
+    const filteredCount = countProducts(filteredProducts, item);
+
+    const className = filteredCount ? "checkbox-line" : "checkbox-line item-not-active";
+
+    return (
+      <li className={className}>
+        <input type="checkbox" id={item} checked={isChecked(item)} readOnly/>
+        <label htmlFor={item}>{item}</label>
+        <span>{`(${filteredCount}/${allCount})`}</span>
+      </li>);
+  }
+
   return (
     <div className="filter-list">
       <h3 className="filter-title">{`${filterName[0].toUpperCase()}${filterName.slice(1)}`}</h3>
       <ul className="filter-list__items" onChange={checkBoxHandler}>
-        {[...items].map((el, i) => {
-          return (
-          <li className="checkbox-line" key={i}>
-            <input type="checkbox" id={el} checked={isChecked(el)} readOnly/>
-            <label htmlFor={el}>{el}</label>
-          </li>)
-        })}
+        {[...items].map((el, i) => <Item item={el} key={i}/>)}
       </ul>
     </div>
   );
