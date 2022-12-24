@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SORT_OPTIONS, SORT_PARAM } from '../../components/sort/sortSelect';
+import { sortOption, SORT_CRITERIA, SORT_OPTIONS, SORT_ORDER, SORT_PARAM } from '../../components/sort/sortSelect';
 import { useFetchedProducts } from '../../hooks/useProducts';
 import { IProduct } from '../../interfaces/products';
 
@@ -68,13 +68,19 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
   }, []);
 
   const sortProducts = useCallback((products: IProduct[], searchParams: URLSearchParams) => {
-    const sortParam = searchParams.get(SORT_PARAM);
+    const sortParam = searchParams.get(SORT_PARAM) as sortOption;
     if (!sortParam) return products;
     if (!SORT_OPTIONS.includes(sortParam)) return products;
 
-    const sortParamArr = sortParam.split('-');
-    const sortBy = sortParamArr[0] as keyof IProduct;
-    const sortOrder = sortParamArr[1];
+    const paramsMap = new Map<SORT_CRITERIA, keyof IProduct>([
+      [SORT_CRITERIA.price, 'price'],
+      [SORT_CRITERIA.rating, 'rating'],
+      [SORT_CRITERIA.discount, 'discountPercentage']
+    ]);
+    
+    const [sortCriterion, sortOrder] = sortParam.split('-') as [SORT_CRITERIA, SORT_ORDER];
+    const sortBy = paramsMap.get(sortCriterion) as keyof IProduct;
+    
     if (sortOrder === 'ASC') {
       return [...products].sort((a, b) => (a[sortBy] as number) - (b[sortBy] as number));
     } else {

@@ -2,7 +2,20 @@ import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const SORT_PARAM = 'sort';
-export const SORT_OPTIONS = ['sort-title', 'price-ASC', 'price-DESC', 'rating-ASC', 'rating-DESC', 'discountPercentage-ASC', 'discountPercentage-DESC'];
+
+export enum SORT_CRITERIA {
+  price = 'price',
+  rating = 'rating',
+  discount = 'discount'
+}
+export enum SORT_ORDER {
+  ASC = 'ASC',
+  DESC = 'DESC'
+}
+
+export type sortOption = `${SORT_CRITERIA}-${SORT_ORDER}`;
+
+export const SORT_OPTIONS: sortOption[] = ['price-ASC', 'price-DESC', 'rating-ASC', 'rating-DESC', 'discount-ASC', 'discount-DESC'];
 
 export default function SortSelect() { 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,8 +27,8 @@ export default function SortSelect() {
     })
   }
 
-  const inQuery = searchParams.has(SORT_PARAM) && SORT_OPTIONS.includes(searchParams.get(SORT_PARAM) as string) 
-    ? searchParams.get(SORT_PARAM) as string 
+  const inQuery = searchParams.has(SORT_PARAM) && SORT_OPTIONS.includes(searchParams.get(SORT_PARAM) as sortOption) 
+    ? searchParams.get(SORT_PARAM) as sortOption 
     : 'sort-title'
 
   return (
@@ -26,7 +39,7 @@ export default function SortSelect() {
         name="sort-select" 
         id="sort-select"
         >
-        {SORT_OPTIONS.map((el, i) => {
+        {['sort-title', ...SORT_OPTIONS].map((el, i) => {
           if (el === 'sort-title') {
             return <option key={i} value={el} disabled>{`Sort options:`}</option>;
           }
