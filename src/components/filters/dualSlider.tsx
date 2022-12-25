@@ -17,20 +17,35 @@ export default function FilterDualSlider({ filterName }: IFilterDualSliderProps)
  
   useEffect(() => {
     const values = filteredProducts.map(el => el[filterName]);
-    const minValue = Math.min(...values);
-    const maxValue = Math.max(...values);
-    setMinVal(items.findIndex(el => el === minValue));
-    setMaxVal(items.findIndex(el => el === maxValue));
+    if (values.length) {
+      const minValue = Math.min(...values);
+      const maxValue = Math.max(...values);
+      setMinVal(items.findIndex(el => el === minValue));
+      setMaxVal(items.findIndex(el => el === maxValue));
+    } else {
+      setMinVal(0);
+      setMaxVal(items.length - 1);
+    }
   }, [filteredProducts])
   
+  const isPrice = filterName === 'price'; 
+  const priceSymbol = isPrice ? '€' : '';
+
   return (
-    <>
       <div className="dual-slider">
         <h3 className="filter-title">{`${filterName[0].toUpperCase()}${filterName.slice(1)}`}</h3>
         <div className="out-data">
-          <p className="from-data">{`${filterName === 'price' ? '€' : ''}${items[minVal]}`}</p>
-          <p>{" ⟷ "}</p>
-          <p className="to-data">{`${filterName === 'price' ? '€' : ''}${items[maxVal]}`}</p>
+          {
+            filteredProducts.length 
+              ? (minVal === maxVal 
+                  ? <span>{`${priceSymbol}${items[minVal]}`}</span>
+                  : <>
+                      <p className="from-data">{`${priceSymbol}${items[minVal]}`}</p>
+                      <p>{" ⟷ "}</p>
+                      <p className="to-data">{`${priceSymbol}${items[maxVal]}`}</p>
+                    </>)
+              : <span>NOT FOUND</span>
+          }
         </div>
         <div className="multi-range">
           <input
@@ -73,6 +88,5 @@ export default function FilterDualSlider({ filterName }: IFilterDualSliderProps)
           </div>
         </div>
       </div>
-    </>
   );
 }
