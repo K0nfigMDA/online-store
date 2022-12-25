@@ -1,17 +1,21 @@
-import { useProducts } from "../../contexts/products/productsContext";
 import FilterDualSlider from "./dualSlider";
 import FilterList from "./filterList";
 
+enum FILTERS {
+  category = 'category',
+  brand = 'brand',
+  price = 'price',
+  stock = 'stock',
+  search = 'search'
+}
 
 export default function FiltersContainer() {
-  const { allProducts } = useProducts();
-
   return (
     <div className="filters">
-      <FilterList filterName="category"/>
-      <FilterList filterName="brand"/>
-      <FilterDualSlider filterName="price" products={allProducts}/>
-      <FilterDualSlider filterName="stock" products={allProducts}/>
+      <FilterList filterName={FILTERS.category}/>
+      <FilterList filterName={FILTERS.brand}/>
+      <FilterDualSlider filterName={FILTERS.price}/>
+      <FilterDualSlider filterName={FILTERS.stock}/>
     </div>
   );
 }

@@ -1,48 +1,42 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useProducts } from "../../contexts/products/productsContext";
 import { IProduct } from "../../interfaces/products";
 import './dualSlider.scss';
 
 interface IFilterDualSliderProps {
-  filterName: 'price' | 'stock';
-  products: IProduct[];
+  filterName: keyof Pick<IProduct, 'price' | 'stock'>;
 }
 
-export default function FilterDualSlider({ filterName, products }: IFilterDualSliderProps) {
+export default function FilterDualSlider({ filterName }: IFilterDualSliderProps) {
+  const { allProducts, filteredProducts } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
-  const values = products.map(el => el[filterName]);
-  const minValue = Math.min(...values);
-  const maxValue = Math.max(...values);
-  const [minVal, setMinVal] = useState(minValue);
-  const [maxVal, setMaxVal] = useState(maxValue);
+  const items = [...new Set(allProducts.map(el => el[filterName]))].sort((a, b) => a - b);
+  const [minVal, setMinVal] = useState(0);
+  const [maxVal, setMaxVal] = useState(0);
  
   useEffect(() => {
-    const params = searchParams.get(filterName);
-    if (params) {
-      const paramsArr = params.split('↕');
-      setMinVal(Number(paramsArr[0]));
-      setMaxVal(Number(paramsArr[1]));  
-    } else {
-      setMinVal(minValue);
-      setMaxVal(maxValue);
-    }
-  }, 
-  [minValue])
+    const values = filteredProducts.map(el => el[filterName]);
+    const minValue = Math.min(...values);
+    const maxValue = Math.max(...values);
+    setMinVal(items.findIndex(el => el === minValue));
+    setMaxVal(items.findIndex(el => el === maxValue));
+  }, [filteredProducts])
   
   return (
     <>
       <div className="dual-slider">
         <h3 className="filter-title">{`${filterName[0].toUpperCase()}${filterName.slice(1)}`}</h3>
         <div className="out-data">
-          <p className="from-data">{`${filterName === 'price' ? '€' : ''}${minVal}`}</p>
+          <p className="from-data">{`${filterName === 'price' ? '€' : ''}${items[minVal]}`}</p>
           <p>{" ⟷ "}</p>
-          <p className="to-data">{`${filterName === 'price' ? '€' : ''}${maxVal}`}</p>
+          <p className="to-data">{`${filterName === 'price' ? '€' : ''}${items[maxVal]}`}</p>
         </div>
         <div className="multi-range">
           <input
             type="range"
-            min={minValue}
-            max={maxValue}
+            min={0}
+            max={items.length - 1}
             value={minVal}
             onInput={(event: FormEvent<HTMLInputElement>) => {
               const target = event.target as HTMLInputElement;
@@ -50,16 +44,16 @@ export default function FilterDualSlider({ filterName, products }: IFilterDualSl
               setMinVal(value);
               target.value = value.toString();
               setSearchParams((prev) => {
-                prev.set(filterName, `${value}↕${maxVal}`);
+                prev.set(filterName, `${items[value]}↕${items[maxVal]}`);
                 return prev;
               })
             }}
-            className={minVal > maxVal - 100 ? "thumb thumb--zindex-5" : "thumb thumb--zindex-3"}
+            className={minVal > maxVal - 1 ? "thumb thumb--zindex-5" : "thumb thumb--zindex-3"}
           />
           <input
             type="range"
-            min={minValue}
-            max={maxValue}
+            min={0}
+            max={items.length - 1}
             value={maxVal}
             onInput={(event: FormEvent<HTMLInputElement>) => {
               const target = event.target as HTMLInputElement;
@@ -67,7 +61,7 @@ export default function FilterDualSlider({ filterName, products }: IFilterDualSl
               setMaxVal(value);
               target.value = value.toString();
               setSearchParams((prev) => {
-                prev.set(filterName, `${minVal}↕${value}`);
+                prev.set(filterName, `${items[minVal]}↕${items[value]}`);
                 return prev;
               })
             }}
