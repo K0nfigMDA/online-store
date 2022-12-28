@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { sortOption, SORT_CRITERIA, SORT_OPTIONS, SORT_ORDER, SORT_PARAM } from '../../components/sort/sortSelect';
+import { sortOption, SORT_CRITERIA, SORT_OPTIONS, SORT_ORDER, SORT_PARAM } from '../../constants/sort';
 import { useFetchedProducts } from '../../hooks/useProducts';
 import { IProduct } from '../../interfaces/products';
 
@@ -81,7 +81,7 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
     const [sortCriterion, sortOrder] = sortParam.split('-') as [SORT_CRITERIA, SORT_ORDER];
     const sortBy = paramsMap.get(sortCriterion) as keyof IProduct;
     
-    if (sortOrder === 'ASC') {
+    if (sortOrder === SORT_ORDER.ASC) {
       return [...products].sort((a, b) => (a[sortBy] as number) - (b[sortBy] as number));
     } else {
       return [...products].sort((a, b) => (b[sortBy] as number) - (a[sortBy] as number));
