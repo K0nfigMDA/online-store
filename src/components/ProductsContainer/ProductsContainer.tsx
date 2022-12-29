@@ -1,6 +1,6 @@
-import Product from "../product/product";
+import Product from "../Product/Product";
 import { useProducts } from "../../contexts/products/productsContext";
-import './productsContainer.scss';
+import './ProductsContainer.scss';
 
 
 export default function ProductsContainer() {

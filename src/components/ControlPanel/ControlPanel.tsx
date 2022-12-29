@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/products/productsContext";
-import SortSelect from "../sort/sortSelect";
-import './controlPanel.scss';
+import SortSelect from "../SortSelect/SortSelect";
+import './ControlPanel.scss';
 
 
 export default function ControlPanel() { 

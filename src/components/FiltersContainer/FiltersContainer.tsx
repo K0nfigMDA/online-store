@@ -1,6 +1,6 @@
-import FilterDualSlider from "./dualSlider";
-import FilterList from "./filterList";
 import { useSearchParams } from "react-router-dom";
+import FilterDualSlider from "../FilterDualSlider/FilterDualSlider";
+import FilterList from "../FilterList/FilterList";
 
 enum FILTERS {
   category = 'category',

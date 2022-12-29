@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/products/productsContext";
 import { IProduct } from "../../interfaces/products";
-import './dualSlider.scss';
+import './FilterDualSlider.scss';
 
 interface IFilterDualSliderProps {
   filterName: keyof Pick<IProduct, 'price' | 'stock'>;

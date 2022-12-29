@@ -1,4 +1,4 @@
-import './footer.scss'
+import './Footer.scss'
 import gitImg from '../../assets/img/gitlogo.svg'
 import rsImg from '../../assets/img/rslogo.png'
 function Footer() {

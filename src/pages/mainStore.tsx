@@ -1,6 +1,6 @@
-import FiltersContainer from "../components/filters/filtersContainer";
-import ControlPanel from "../components/main-control-panel/controlPanel";
-import ProductsContainer from "../components/products-container/productsContainer";
+import FiltersContainer from "../components/FiltersContainer/FiltersContainer";
+import ControlPanel from "../components/ControlPanel/ControlPanel";
+import ProductsContainer from "../components/ProductsContainer/ProductsContainer";
 import './mainStore.scss';
 
 
