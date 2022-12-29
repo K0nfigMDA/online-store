@@ -1,6 +1,6 @@
 import { useCart } from "../../contexts/cart/cartContext";
 import { IProduct } from "../../interfaces/products";
-import './product.scss';
+import './Product.scss';
 
 interface IProductProps {
   product: IProduct;

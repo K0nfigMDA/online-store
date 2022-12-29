@@ -1,6 +1,6 @@
 import { useProducts } from "../../contexts/products/productsContext";
-import FilterDualSlider from "./dualSlider";
-import FilterList from "./filterList";
+import FilterDualSlider from "../FilterDualSlider/FilterDualSlider";
+import FilterList from "../FilterList/FilterList";
 
 
 export default function FiltersContainer() {

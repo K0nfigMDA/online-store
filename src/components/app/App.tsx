@@ -1,5 +1,5 @@
-import Header from '../header/header';
-import Footer from '../footer/footer';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import {Routes, Route} from 'react-router-dom';
 import CartPage from '../../pages/cart';
 import MainStore from '../../pages/mainStore';
