@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { IProduct } from "../../interfaces/products";
-import './filterList.scss';
+import './FilterList.scss';
 
 interface IFilterListProps {
   filterName: string;
