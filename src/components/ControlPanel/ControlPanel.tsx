@@ -1,11 +1,10 @@
-import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/products/productsContext";
 import SortSelect from "../SortSelect/SortSelect";
+import ViewModeSwitch from "../ViewModeSwitch/ViewModeSwitch";
 import './ControlPanel.scss';
 
 
 export default function ControlPanel() { 
-  const [searchParams, setSearchParams] = useSearchParams();
   const { filteredProducts } = useProducts();
 
 
@@ -13,6 +12,7 @@ export default function ControlPanel() {
     <div className="control-panel">
       <SortSelect/>
       <div className="stat">{`Found: ${filteredProducts.length}`}</div>
+      <ViewModeSwitch/>
     </div>
   );
 }
