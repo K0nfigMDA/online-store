@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import { useCart } from "../../contexts/cart/cartContext";
 import { IProduct } from "../../interfaces/products";
 import './Product.scss';
@@ -8,8 +9,10 @@ interface IProductProps {
 
 export default function Product({ product }: IProductProps) {
   const { cart, addToCart, removeFromCart } = useCart();
+  const [searchParams] = useSearchParams();
 
   const inCart = cart.find(el => el.id === product.id);
+  const inCartClass = inCart ? 'in-cart' : '';
 
   const addHandler = () => {
     addToCart(product);
@@ -20,7 +23,7 @@ export default function Product({ product }: IProductProps) {
   }
 
   return (
-    <div className="product-item">
+    <div className={`product-item ${inCartClass}`}>
       <div className="item-wrapper" style={{background: `url(${product.thumbnail}) 0% 0% / cover`}}>
         <div className="item-text">
           <div className="item-title">{ product.title }</div>
