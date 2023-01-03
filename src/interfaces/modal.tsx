@@ -4,4 +4,7 @@ export interface IShippingFields {
 	name: string
 	adress: string
 	phoneNumber: number
+	cardNumber: number
+	cardDate: number
+	cvv: number
 }
