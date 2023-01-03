@@ -6,7 +6,7 @@ import MainStore from '../../pages/mainStore';
 import ProductDetails from '../../pages/productDetails';
 import { CartProvider } from '../../contexts/cart/cartContext';
 import { ProductsProvider } from '../../contexts/products/productsContext';
-
+import { ROUTES } from '../../constants/routes';
 
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
         <CartProvider>
           <Header/>
           <Routes>
-            <Route path='/' element={ < MainStore /> }></Route>
-            <Route path='/cart' element={ < CartPage /> }></Route>
-            <Route path='/product-details' element={ < ProductDetails /> }></Route>
+            <Route path={ROUTES.ROOT} element={ < MainStore /> }></Route>
+            <Route path={ROUTES.CART} element={ < CartPage /> }></Route>
+            <Route path={`${ROUTES.PRODUCT_DETAILS}/:id`} element={ < ProductDetails /> }></Route>
           </Routes>
           <Footer/>
         </CartProvider>

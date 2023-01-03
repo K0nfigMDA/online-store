@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 import { useCart } from "../../contexts/cart/cartContext";
 import { IProduct } from "../../interfaces/products";
 import './Product.scss';
@@ -38,7 +40,7 @@ export default function Product({ product }: IProductProps) {
         <div className="item-buttons">
           {inCart && <button className="button" onClick={removeHandler}>DROP FROM CART</button>}
           {!inCart && <button className="button" onClick={addHandler}>ADD TO CART</button>}
-          <button className="button">DETAILS</button>
+          <Link to={`${ROUTES.PRODUCT_DETAILS}/${product.id}`}><button className="button">DETAILS</button></Link>
         </div>
       </div>
     </div>
