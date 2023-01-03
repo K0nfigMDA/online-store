@@ -5,16 +5,8 @@ import { masterImg, mirImg, noLogoImg, visaImg } from '../../constants/modal';
 import { IShippingFields } from '../../interfaces/modal';
 import './modal-form.scss';
 
-
-
-
-
-
 export default function ModalForm() {
-
-	const [cardNumber, setCardNumber] = useState('')
-
-
+   const [cardNumber, setCardNumber] = useState('');
 
    const {
       register,
@@ -40,34 +32,31 @@ export default function ModalForm() {
    function addSeparator(e: FormEvent) {
       const target = e.target as HTMLInputElement;
       const value = target.value;
-			const clearValue = clearNumber(value)
+      const clearValue = clearNumber(value);
 
       if (clearValue.length >= 3) {
-				target.value = `${clearValue.slice(0, 2)}/${clearValue.slice(2, 4)}`
+         target.value = `${clearValue.slice(0, 2)}/${clearValue.slice(2, 4)}`;
+      } else {
+         target.value = clearValue;
       }
-			else {target.value = clearValue}
    }
 
-	 function clearNumber (value = '') {
-		return value.replace(/\D+/g, '')
-	}
+   function clearNumber(value = '') {
+      return value.replace(/\D+/g, '');
+   }
 
-	function changeCardImg() {
-		if (cardNumber === '5') {
-			 return visaImg
-		}
-		if(cardNumber === '6') {
-			return masterImg
-		}
-		if(cardNumber === '4') {
-			return mirImg
-		}
-		return noLogoImg
-	}
-
-
-	
-
+   function changeCardImg() {
+      if (cardNumber === '5') {
+         return visaImg;
+      }
+      if (cardNumber === '6') {
+         return masterImg;
+      }
+      if (cardNumber === '4') {
+         return mirImg;
+      }
+      return noLogoImg;
+   }
 
    return (
       <>
@@ -75,7 +64,7 @@ export default function ModalForm() {
          <form onSubmit={handleSubmit(onSubmit)}>
             <input
                {...register('name', {
-                  required: 'Enter your name',
+                  required: 'Please enter your name',
                   pattern: {
                      value: /[a-z]{3}\s[a-z]{3}/i,
                      message: 'Please enter valid name',
@@ -92,7 +81,7 @@ export default function ModalForm() {
 
             <input
                {...register('phoneNumber', {
-                  required: 'Enter your phone-number',
+                  required: 'Please enter your phone-number',
                   pattern: {
                      value: /\+\d{9}/,
                      message: 'Please enter valid number',
@@ -109,7 +98,7 @@ export default function ModalForm() {
 
             <input
                {...register('adress', {
-                  required: 'Enter your adress',
+                  required: 'Please enter your adress',
                   pattern: {
                      value: /[a-z]{5,30}\s[a-z]{5,30}\s[a-z]{5,30}/i,
                      message: 'Please enter valid adress',
@@ -126,7 +115,7 @@ export default function ModalForm() {
 
             <input
                {...register('email', {
-                  required: 'enter your email',
+                  required: 'Please enter your email',
                   pattern: {
                      value: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
                      message: 'Please enter valid Email',
@@ -147,13 +136,13 @@ export default function ModalForm() {
                <div className="card__number-logo">
                   <img
                      className="card__logo"
-                     src= {changeCardImg()}
+                     src={changeCardImg()}
                      alt="cardlogo"
                   />
 
                   <input
                      {...register('cardNumber', {
-                        required: 'enter your card number',
+                        required: 'Please enter your card number',
                         pattern: {
                            value: /\d{16}/,
                            message: 'Please enter valid card number',
@@ -161,18 +150,15 @@ export default function ModalForm() {
                      })}
                      type="number"
                      onInput={(e: FormEvent) => {
-											const target = e.target as HTMLInputElement
-											restrictInput(e, 16)
-											setCardNumber(target.value)}}
+                        const target = e.target as HTMLInputElement;
+                        restrictInput(e, 16);
+                        setCardNumber(target.value);
+                     }}
                      className="card__number card-input"
                      placeholder="Card number"
                   />
 
-                  {errors?.cardNumber && (
-                     <div className="modal__error">
-                        {errors.cardNumber?.message}
-                     </div>
-                  )}
+                  
                </div>
                <div className="card__date-code">
                   <div className="card__date">
@@ -180,9 +166,9 @@ export default function ModalForm() {
 
                      <input
                         {...register('cardDate', {
-                           required: 'enter your card date',
+                           required: 'Please enter your card date',
                            pattern: {
-                              value: /\d{2}\/\d{2}/,
+                              value: /[0-1][0-2]\/\d{2}/,
                               message: 'Please enter valid card date',
                            },
                         })}
@@ -194,37 +180,44 @@ export default function ModalForm() {
                         placeholder="Valid Thru"
                      />
 
-                     {errors?.cardDate && (
-                        <div className="modal__error">
-                           {errors.cardDate?.message}
-                        </div>
-                     )}
+                     
                   </div>
                   <div className="card__code">
                      <span className="card__code-text">CVV:</span>
 
                      <input
                         {...register('cvv', {
-                           required: 'enter your cvv',
+                           required: 'Please enter your cvv',
                            pattern: {
                               value: /\d{3,3}/,
                               message: 'Please enter valid cvv',
                            },
                         })}
                         type="number"
-												onInput={(e: FormEvent) => restrictInput(e, 3)}
+                        onInput={(e: FormEvent) => restrictInput(e, 3)}
                         className="card__code-input card-input"
                         placeholder="Code"
                      />
 
-                     {errors?.cvv && (
+                  
+                  </div>
+               </div>
+            </div>
+						{errors?.cardNumber && (
+                     <div className="modal__error">
+                        {errors.cardNumber?.message}
+                     </div>
+                  )}
+						{errors?.cardDate && (
+                        <div className="modal__error">
+                           {errors.cardDate?.message}
+                        </div>
+                     )}
+						{errors?.cvv && (
                         <div className="modal__error">
                            {errors.cvv?.message}
                         </div>
                      )}
-                  </div>
-               </div>
-            </div>
             <button type="submit" className="modal__btn">
                Confirm
             </button>
