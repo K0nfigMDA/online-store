@@ -59,7 +59,7 @@ export default function ModalForm() {
    }
 
    return (
-      <>
+				<div className='modal-content'>
          <h3 className="modal-text">Personal Details</h3>
          <form onSubmit={handleSubmit(onSubmit)}>
             <input
@@ -222,6 +222,6 @@ export default function ModalForm() {
                Confirm
             </button>
          </form>
-      </>
+				</div>
    );
 }

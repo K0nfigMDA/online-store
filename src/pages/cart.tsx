@@ -2,18 +2,29 @@ import CartProducts from '../components/cart-products/cart-products'
 import CartSummary from  '../components/cart-summary/cart-summary'
 import './cart.scss'
 import { useCart } from '../contexts/cart/cartContext';
+import Modal from '../components/modal/modal';
+import ModalForm from '../components/modal-form/modal-form';
+import ModalRedirect from '../components/ModalRedirect/ModalRedirect';
+import { useState } from 'react';
 
 
 
 
-export default function CartPage() {
+export function CartPage() {
+	const [modal, setModal] = useState(false)
 	const { cart } = useCart();
 	console.log(cart)
 
 	return (
 		<div className='cart__container'>
 			<CartProducts/>
-			<CartSummary/>
+			<CartSummary modal = {setModal}/>
+			{modal && <Modal modal = {setModal}>
+				<ModalForm/>
+				<ModalRedirect/>
+			</Modal>}
+			
+			
 		</div>
   );
 }

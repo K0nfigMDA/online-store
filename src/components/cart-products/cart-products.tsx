@@ -3,6 +3,7 @@ import CartProductsItem from '../cart-products-item/cart-products-item';
 import { useCart } from '../../contexts/cart/cartContext';
 import Modal from '../modal/modal';
 import ModalForm from '../modal-form/modal-form';
+import ModalRedirect from '../ModalRedirect/ModalRedirect';
 
 
 export default function CartProducts() {
@@ -27,9 +28,7 @@ export default function CartProducts() {
          <div className="products__body">
 					{cart.map((el, index) => <CartProductsItem product={el} key = {el.id} num = {index + 1}/>)}
 				 </div>
-				 <Modal>
-					<ModalForm/>
-				 </Modal>
+				 
       </div>
    );
 }

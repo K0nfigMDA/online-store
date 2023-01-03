@@ -58,5 +58,3 @@ export default function CartProductsItem({product, num}: CartProductsItemProps) 
    );
 }
 
-// Спросить про функции из Хедера( добавление добавление товара работает, ремув не работает )
-// как писать цикл в дивах?

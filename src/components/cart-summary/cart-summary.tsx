@@ -1,7 +1,11 @@
 import './cart-summary.scss'
 import { useCart } from '../../contexts/cart/cartContext';
 
-export default function CartSummary() {
+interface CartSummaryProps {
+	modal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function CartSummary({modal}:CartSummaryProps) {
 	const { cart } = useCart();
 
 	const cartSum = () => cart.reduce((acc, el) => acc + el.quantity * el.price, 0);
@@ -14,7 +18,7 @@ export default function CartSummary() {
 					<div className="summary__products-amount">Products: {cartQuantity()}</div>
 					<div className="summary__total-priсe">Total: €{cartSum()}</div>
 					<input className='summary__promo' type="search" />
-					<button className='summary__btn'>Buy now</button>
+					<button onClick={() => modal(true)} className='summary__btn'>Buy now</button>
 				</div>
 		</div>
   );
