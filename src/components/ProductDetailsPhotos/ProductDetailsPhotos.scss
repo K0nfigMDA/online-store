@@ -1,0 +1,30 @@
+.product-photos {
+  width: 40%;
+  display: flex;
+}
+
+.slides {
+  width: 25%;
+
+  img {
+    width: 80%;
+    border: 1px solid orange;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.grand-photo {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-height: 40vh;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid orange;
+    border-radius: 0.5rem;
+  }
+}
