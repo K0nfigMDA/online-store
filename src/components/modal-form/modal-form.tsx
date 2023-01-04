@@ -2,11 +2,17 @@ import { FormEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SubmitHandler } from 'react-hook-form/dist/types';
 import { masterImg, mirImg, noLogoImg, visaImg } from '../../constants/modal';
+import { useCart } from '../../contexts/cart/cartContext';
 import { IShippingFields } from '../../interfaces/modal';
 import './modal-form.scss';
 
-export default function ModalForm() {
+interface ModalProps {
+   redirect: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function ModalForm({ redirect }: ModalProps) {
    const [cardNumber, setCardNumber] = useState('');
+   const { cleanCart } = useCart();
 
    const {
       register,
@@ -16,7 +22,8 @@ export default function ModalForm() {
    } = useForm<IShippingFields>({ mode: 'onChange' });
 
    const onSubmit: SubmitHandler<IShippingFields> = (data) => {
-      alert('Order is processed');
+      redirect(true);
+      cleanCart();
       reset();
    };
 
@@ -59,7 +66,7 @@ export default function ModalForm() {
    }
 
    return (
-				<div className='modal-content'>
+      <div className="modal-content">
          <h3 className="modal-text">Personal Details</h3>
          <form onSubmit={handleSubmit(onSubmit)}>
             <input
@@ -157,8 +164,6 @@ export default function ModalForm() {
                      className="card__number card-input"
                      placeholder="Card number"
                   />
-
-                  
                </div>
                <div className="card__date-code">
                   <div className="card__date">
@@ -179,8 +184,6 @@ export default function ModalForm() {
                         className="card__date-input card-input"
                         placeholder="Valid Thru"
                      />
-
-                     
                   </div>
                   <div className="card__code">
                      <span className="card__code-text">CVV:</span>
@@ -198,30 +201,22 @@ export default function ModalForm() {
                         className="card__code-input card-input"
                         placeholder="Code"
                      />
-
-                  
                   </div>
                </div>
             </div>
-						{errors?.cardNumber && (
-                     <div className="modal__error">
-                        {errors.cardNumber?.message}
-                     </div>
-                  )}
-						{errors?.cardDate && (
-                        <div className="modal__error">
-                           {errors.cardDate?.message}
-                        </div>
-                     )}
-						{errors?.cvv && (
-                        <div className="modal__error">
-                           {errors.cvv?.message}
-                        </div>
-                     )}
+            {errors?.cardNumber && (
+               <div className="modal__error">{errors.cardNumber?.message}</div>
+            )}
+            {errors?.cardDate && (
+               <div className="modal__error">{errors.cardDate?.message}</div>
+            )}
+            {errors?.cvv && (
+               <div className="modal__error">{errors.cvv?.message}</div>
+            )}
             <button type="submit" className="modal__btn">
                Confirm
             </button>
          </form>
-				</div>
+      </div>
    );
 }

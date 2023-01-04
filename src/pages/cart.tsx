@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 export function CartPage() {
 	const [modal, setModal] = useState(false)
+	const [redirect, setRedirect] = useState(false)
 	const { cart } = useCart();
 	console.log(cart)
 
@@ -19,9 +20,8 @@ export function CartPage() {
 		<div className='cart__container'>
 			<CartProducts/>
 			<CartSummary modal = {setModal}/>
-			{modal && <Modal modal = {setModal}>
-				<ModalForm/>
-				<ModalRedirect/>
+			{modal && <Modal modal = {setModal} redirect = {redirect}>
+			{redirect ? <ModalRedirect redirect = {setRedirect}/> : <ModalForm redirect = {setRedirect}/>}
 			</Modal>}
 			
 			
