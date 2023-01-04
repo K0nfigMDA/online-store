@@ -1,9 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SubmitHandler } from 'react-hook-form/dist/types';
-import { masterImg, mirImg, noLogoImg, visaImg } from '../../constants/modal';
 import { useCart } from '../../contexts/cart/cartContext';
 import { IShippingFields } from '../../interfaces/modal';
+import {
+   restrictInput,
+   addSeparator,
+   changeCardImg,
+} from '../../helpers/modal';
 import './modal-form.scss';
 
 interface ModalProps {
@@ -26,44 +30,6 @@ export default function ModalForm({ redirect }: ModalProps) {
       cleanCart();
       reset();
    };
-
-   function restrictInput(e: FormEvent, length: number) {
-      const target = e.target as HTMLInputElement;
-      const value = target.value;
-      if (value.length > length) {
-         const newValue = value.slice(0, length);
-         target.value = newValue;
-      }
-   }
-
-   function addSeparator(e: FormEvent) {
-      const target = e.target as HTMLInputElement;
-      const value = target.value;
-      const clearValue = clearNumber(value);
-
-      if (clearValue.length >= 3) {
-         target.value = `${clearValue.slice(0, 2)}/${clearValue.slice(2, 4)}`;
-      } else {
-         target.value = clearValue;
-      }
-   }
-
-   function clearNumber(value = '') {
-      return value.replace(/\D+/g, '');
-   }
-
-   function changeCardImg() {
-      if (cardNumber === '5') {
-         return visaImg;
-      }
-      if (cardNumber === '6') {
-         return masterImg;
-      }
-      if (cardNumber === '4') {
-         return mirImg;
-      }
-      return noLogoImg;
-   }
 
    return (
       <div className="modal-content">
@@ -143,7 +109,7 @@ export default function ModalForm({ redirect }: ModalProps) {
                <div className="card__number-logo">
                   <img
                      className="card__logo"
-                     src={changeCardImg()}
+                     src={changeCardImg(cardNumber)}
                      alt="cardlogo"
                   />
 
