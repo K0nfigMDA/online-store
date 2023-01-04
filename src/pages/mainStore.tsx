@@ -1,16 +1,17 @@
-import FiltersContainer from "../components/filters/filtersContainer";
-import ProductsContainer from "../components/products-container/productsContainer";
-import { useProducts } from "../hooks/useProducts";
+import FiltersContainer from "../components/FiltersContainer/FiltersContainer";
+import ControlPanel from "../components/ControlPanel/ControlPanel";
+import ProductsContainer from "../components/ProductsContainer/ProductsContainer";
 import './mainStore.scss';
 
 
 export default function MainStore() {
-  const {products, error} = useProducts();
-
   return (
     <main className="store-page">
-      <FiltersContainer products={products}/>
-      <ProductsContainer products={products} error={error}/>
+      <FiltersContainer/>
+      <div className="products">
+        <ControlPanel/>
+        <ProductsContainer/>
+      </div>
     </main>
   );
 }
