@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { FILTERS } from "../../constants/filters";
 import { useProducts } from "../../contexts/products/productsContext";
 import { IProduct } from "../../interfaces/products";
 import './FilterDualSlider.scss';
@@ -10,10 +11,10 @@ interface IFilterDualSliderProps {
 
 export default function FilterDualSlider({ filterName }: IFilterDualSliderProps) {
   const { allProducts, filteredProducts } = useProducts();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const items = [...new Set(allProducts.map(el => el[filterName]))].sort((a, b) => a - b);
+  const [, setSearchParams] = useSearchParams();
   const [minVal, setMinVal] = useState(0);
   const [maxVal, setMaxVal] = useState(0);
+  const items = [...new Set(allProducts.map(el => el[filterName]))].sort((a, b) => a - b);
  
   useEffect(() => {
     const values = filteredProducts.map(el => el[filterName]);
@@ -28,7 +29,7 @@ export default function FilterDualSlider({ filterName }: IFilterDualSliderProps)
     }
   }, [filteredProducts])
   
-  const isPrice = filterName === 'price'; 
+  const isPrice = filterName === FILTERS.price; 
   const priceSymbol = isPrice ? '€' : '';
 
   return (
