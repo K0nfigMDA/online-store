@@ -79,3 +79,8 @@ export const searchProducts = (products: IProduct[], searchParams: URLSearchPara
 
   return newProducts;
 };
+
+export function countProducts(products: IProduct[], filterName: keyof IProduct, searchField: string) {
+  const filtered = products.filter((el) => el[filterName] === searchField);
+  return filtered.length;
+}
