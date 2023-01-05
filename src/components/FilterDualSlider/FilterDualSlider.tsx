@@ -48,46 +48,48 @@ export default function FilterDualSlider({ filterName }: IFilterDualSliderProps)
               : <span>NOT FOUND</span>
           }
         </div>
-        <div className="multi-range">
-          <input
-            type="range"
-            min={0}
-            max={items.length - 1}
-            value={minVal}
-            onInput={(event: FormEvent<HTMLInputElement>) => {
-              const target = event.target as HTMLInputElement;
-              const value = Math.min(+target.value, maxVal - 1);
-              setMinVal(value);
-              target.value = value.toString();
-              setSearchParams((prev) => {
-                prev.set(filterName, `${items[value]}↕${items[maxVal]}`);
-                return prev;
-              })
-            }}
-            className={minVal > maxVal - 1 ? "thumb thumb--zindex-5" : "thumb thumb--zindex-3"}
-          />
-          <input
-            type="range"
-            min={0}
-            max={items.length - 1}
-            value={maxVal}
-            onInput={(event: FormEvent<HTMLInputElement>) => {
-              const target = event.target as HTMLInputElement;
-              const value = Math.max(+target.value, minVal + 1);
-              setMaxVal(value);
-              target.value = value.toString();
-              setSearchParams((prev) => {
-                prev.set(filterName, `${items[minVal]}↕${items[value]}`);
-                return prev;
-              })
-            }}
-            className="thumb thumb--zindex-4"
-          />
-          <div className="slider">
-            <div className="slider__track" />
-            <div className="slider__range" />
+        {
+          !!filteredProducts.length && <div className="multi-range">
+            <input
+              type="range"
+              min={0}
+              max={items.length - 1}
+              value={minVal}
+              onInput={(event: FormEvent<HTMLInputElement>) => {
+                const target = event.target as HTMLInputElement;
+                const value = Math.min(+target.value, maxVal - 1);
+                setMinVal(value);
+                target.value = value.toString();
+                setSearchParams((prev) => {
+                  prev.set(filterName, `${items[value]}↕${items[maxVal]}`);
+                  return prev;
+                })
+              }}
+              className={minVal > maxVal - 1 ? "thumb thumb--zindex-5" : "thumb thumb--zindex-3"}
+            />
+            <input
+              type="range"
+              min={0}
+              max={items.length - 1}
+              value={maxVal}
+              onInput={(event: FormEvent<HTMLInputElement>) => {
+                const target = event.target as HTMLInputElement;
+                const value = Math.max(+target.value, minVal + 1);
+                setMaxVal(value);
+                target.value = value.toString();
+                setSearchParams((prev) => {
+                  prev.set(filterName, `${items[minVal]}↕${items[value]}`);
+                  return prev;
+                })
+              }}
+              className="thumb thumb--zindex-4"
+            />
+            <div className="slider">
+              <div className="slider__track" />
+              <div className="slider__range" />
+            </div>
           </div>
-        </div>
+        }
       </div>
   );
 }
