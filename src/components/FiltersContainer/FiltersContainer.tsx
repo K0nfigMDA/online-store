@@ -1,14 +1,8 @@
 import { useSearchParams } from "react-router-dom";
+import { FILTERS } from "../../constants/filters";
 import FilterDualSlider from "../FilterDualSlider/FilterDualSlider";
 import FilterList from "../FilterList/FilterList";
 
-enum FILTERS {
-  category = 'category',
-  brand = 'brand',
-  price = 'price',
-  stock = 'stock',
-  search = 'search'
-}
 
 export default function FiltersContainer() {
   const [searchParams, setSearchParams] = useSearchParams();
