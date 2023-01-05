@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { filterProducts, sortProducts } from '../../helpers/products';
+import { filterProducts, searchProducts, sortProducts } from '../../helpers/products';
 import { useFetchedProducts } from '../../hooks/useProducts';
 import { IProduct } from '../../interfaces/products';
 
@@ -32,7 +32,8 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
 
   useEffect(() => {
     const newProductsFiltered = filterProducts(allProducts, searchParams);
-    const newProducts = sortProducts(newProductsFiltered, searchParams);
+    const newProductsSearched = searchProducts(newProductsFiltered, searchParams);
+    const newProducts = sortProducts(newProductsSearched, searchParams);
     setFilteredProducts(newProducts);    
   }, [allProducts, searchParams]);
   
