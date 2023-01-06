@@ -2,6 +2,7 @@ import './cart-products.scss';
 import CartProductsItem from '../cart-products-item/cart-products-item';
 import { useCart } from '../../contexts/cart/cartContext';
 
+
 export default function CartProducts() {
    const { cart } = useCart();
    return (
@@ -24,6 +25,7 @@ export default function CartProducts() {
          <div className="products__body">
 					{cart.map((el, index) => <CartProductsItem product={el} key = {el.id} num = {index + 1}/>)}
 				 </div>
+				 
       </div>
    );
 }
