@@ -1,3 +1,4 @@
+import { SEARCH_FIELDS, SEARCH_PARAM } from "../constants/search";
 import { sortOption, SORT_CRITERIA, SORT_OPTIONS, SORT_ORDER, SORT_PARAM } from "../constants/sort";
 import { IProduct } from "../interfaces/products";
 
@@ -59,3 +60,27 @@ export const sortProducts = (products: IProduct[], searchParams: URLSearchParams
     return [...products].sort((a, b) => (b[sortBy] as number) - (a[sortBy] as number));
   }
 };
+
+export const searchProducts = (products: IProduct[], searchParams: URLSearchParams) => {
+  const sortParam = searchParams.get(SEARCH_PARAM);
+
+  if (!sortParam) return products;
+
+  const newProducts = products.filter((el) => {
+    const keys = Object.keys(el) as (keyof IProduct)[];
+    for (const key of keys) {
+      if (key in SEARCH_FIELDS) {
+        const value = el[key].toString().toLowerCase();
+        if (value.includes(sortParam.toLowerCase())) return true;
+      }
+    }
+    return false;
+  });
+
+  return newProducts;
+};
+
+export function countProducts(products: IProduct[], filterName: keyof IProduct, searchField: string) {
+  const filtered = products.filter((el) => el[filterName] === searchField);
+  return filtered.length;
+}
