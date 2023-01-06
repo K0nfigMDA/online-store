@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 import { useSearchParams } from "react-router-dom";
 import { VIEW_OPTIONS, VIEW_PARAM } from "../../constants/view";
 import { useCart } from "../../contexts/cart/cartContext";
 import { IProduct } from "../../interfaces/products";
+import ProductCartButton from "../ProductCartButton/ProductCartButton";
 import './Product.scss';
 
 interface IProductProps {
@@ -9,7 +12,7 @@ interface IProductProps {
 }
 
 export default function Product({ product }: IProductProps) {
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { cart } = useCart();
   const [searchParams] = useSearchParams();
 
   const inCart = cart.find(el => el.id === product.id);
@@ -22,14 +25,6 @@ export default function Product({ product }: IProductProps) {
         : true) 
     : true;
   const viewClass = viewMode ? 'big-item' : '';
-
-  const addHandler = () => {
-    addToCart(product);
-  }
-
-  const removeHandler = () => {
-    removeFromCart(product);
-  }
 
   return (
     <div className={`product-item ${inCartClass} ${viewClass}`}>
@@ -49,9 +44,10 @@ export default function Product({ product }: IProductProps) {
             }
         </div>
         <div className="item-buttons">
-          {inCart && <button className="button" onClick={removeHandler}>{viewMode ? 'DROP FROM CART' : 'DROP'}</button>}
-          {!inCart && <button className="button" onClick={addHandler}>{viewMode ? 'ADD TO CART' : 'ADD'}</button>}
-          <button className="button">DETAILS</button>
+          <ProductCartButton product={product} bigMode={viewMode}/>
+          <Link to={`${ROUTES.PRODUCT_DETAILS}/${product.id}`}>
+            <button className="button">DETAILS</button>
+          </Link>
         </div>
       </div>
     </div>
