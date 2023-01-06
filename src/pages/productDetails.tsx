@@ -56,7 +56,7 @@ export default function ProductDetails() {
                 <div className="add-to-cart">
                   <div className="cart-button">
                     {`€${product.price}`}
-                    <ProductCartButton product={product}/>
+                    <ProductCartButton product={product} bigMode={true}/>
                     <Link to={'/cart'}><button className="button">BUY NOW</button></Link>
                   </div>
                 </div>

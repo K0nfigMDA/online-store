@@ -12,7 +12,7 @@ interface IProductProps {
 }
 
 export default function Product({ product }: IProductProps) {
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { cart } = useCart();
   const [searchParams] = useSearchParams();
 
   const inCart = cart.find(el => el.id === product.id);
@@ -25,14 +25,6 @@ export default function Product({ product }: IProductProps) {
         : true) 
     : true;
   const viewClass = viewMode ? 'big-item' : '';
-
-  const addHandler = () => {
-    addToCart(product);
-  }
-
-  const removeHandler = () => {
-    removeFromCart(product);
-  }
 
   return (
     <div className={`product-item ${inCartClass} ${viewClass}`}>
@@ -52,9 +44,7 @@ export default function Product({ product }: IProductProps) {
             }
         </div>
         <div className="item-buttons">
-          <ProductCartButton product={product}/>
-          {inCart && <button className="button" onClick={removeHandler}>{viewMode ? 'DROP FROM CART' : 'DROP'}</button>}
-          {!inCart && <button className="button" onClick={addHandler}>{viewMode ? 'ADD TO CART' : 'ADD'}</button>}
+          <ProductCartButton product={product} bigMode={viewMode}/>
           <Link to={`${ROUTES.PRODUCT_DETAILS}/${product.id}`}>
             <button className="button">DETAILS</button>
           </Link>
