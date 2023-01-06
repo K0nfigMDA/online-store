@@ -20,5 +20,16 @@
 }
 
 .checkbox-line {
+  display: flex;
+  align-items: center;
   white-space: nowrap;
+  color: #f8cc7b;
+
+  span {
+    margin-left: auto;
+  }
+}
+
+.item-not-active {
+  color: #968566;
 }
