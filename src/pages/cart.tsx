@@ -7,7 +7,7 @@ import ModalForm from '../components/modal-form/modal-form';
 import ModalRedirect from '../components/ModalRedirect/ModalRedirect';
 import { useState } from 'react';
 
-export function CartPage() {
+export default function CartPage() {
    const [modal, setModal] = useState(false);
    const [redirect, setRedirect] = useState(false);
 
