@@ -2,18 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: orange;
   word-wrap: break-word;
+}
+
+li {
+  list-style: none;
 }
 
 body {
   background-image: url('./assets/img/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  color: orange;
 }
 
 main {
-  min-height: 85vh;
+  min-height: 83vh;
+  padding: 2%;
 }
 
 #root {
@@ -28,6 +33,7 @@ main {
   padding-right: 2%;
   font-size: 120%;
   cursor: pointer;
+  color: orange;
 }
 
 ::-webkit-scrollbar {
