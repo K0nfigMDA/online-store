@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: orange;
+  word-wrap: break-word;
+}
+
+body {
+  background-image: url('./assets/img/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main {
+  min-height: 85vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.button {
+  background-color: #181a1c;
+  border: 1px solid orange;
+  border-radius: 0.3rem;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 120%;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #181a1c;
+  border-radius: 20px;
+  border: 2px solid orange;
+}
+
+::-webkit-scrollbar-track {
+  background: orange;
+}
