@@ -4,16 +4,20 @@
   overflow: hidden;
   margin-bottom: 5%;
   padding-bottom: 7%;
+  background: rgba(76,74,65,.4);
 }
 
 .out-data {
+  margin: 5% 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  color: wheat;
 }
 
 .multi-range {
   position: relative;
+  margin: 0 2%;
 }
 
 .slider {
@@ -24,18 +28,18 @@
 .slider__track,
 .slider__range {
   border-radius: 3px;
-  height: 5px;
+  height: 3px;
   position: absolute;
 }
 
 .slider__track {
-  background-color: #ced4da;
+  background-color: orange;
   width: 100%;
   z-index: 1;
 }
 
 .slider__range {
-  background-color: #9fe5e1;
+  background-color: orange;
   z-index: 2;
 }
 
@@ -69,24 +73,24 @@
 
 /* For Chrome browsers */
 .thumb::-webkit-slider-thumb {
-  background-color: #f1f5f7;
   border: none;
   border-radius: 50%;
-  box-shadow: 0 0 1px 1px #ced4da;
+  box-shadow: 0 0 1px 1px orange;
   cursor: pointer;
   height: 18px;
   width: 18px;
   margin-top: 4px;
   pointer-events: all;
   position: relative;
+  background: rgb(18, 17, 17);
 }
 
 /* For Firefox browsers */
 .thumb::-moz-range-thumb {
-  background-color: #f1f5f7;
+  background: rgb(18, 17, 17);
   border: none;
   border-radius: 50%;
-  box-shadow: 0 0 1px 1px #ced4da;
+  box-shadow: 0 0 1px 1px orange;
   cursor: pointer;
   height: 18px;
   width: 18px;
