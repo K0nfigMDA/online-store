@@ -13,21 +13,20 @@ interface CartProductsItemProps {
 
 export default function CartProductsItem({product, num}: CartProductsItemProps) {
    const { removeFromCart, addToCart, removeItemFromCart } = useCart();
-	 const [price, setPrice] = useState(product.price)
+	/*  const [price, setPrice] = useState(product.price) */
 	 
 	 
 
 	 
 	 function addItem() {
 		if(product.quantity < product.stock) {
-			setPrice(price + product.price)
+
 			addToCart(product)
 		}
 	 }
 
 	 function removeItem() {
 		if(product.quantity > 1) {
-			setPrice(price - product.price)
 			removeItemFromCart(product)
 		}
 		else(removeFromCart(product))
@@ -52,11 +51,9 @@ export default function CartProductsItem({product, num}: CartProductsItemProps) 
                <div className="controls__amount-num">{product.quantity}</div>
                <button className="controls__minus-btn" onClick={() => removeItem()}>-</button>
             </div>
-            <div className="controls__price">€{price}</div>
+            <div className="controls__price">€{product.quantity * product.price}</div>
          </div>
       </div>
    );
 }
 
-// Спросить про функции из Хедера( добавление добавление товара работает, ремув не работает )
-// как писать цикл в дивах?
