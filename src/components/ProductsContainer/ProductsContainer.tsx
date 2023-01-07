@@ -13,7 +13,7 @@ export default function ProductsContainer() {
           ? error 
           : filteredProducts.length 
             ? filteredProducts.map(product => <Product product={product} key={product.id}/>)
-            : 'PRODUCTS NOT FOUND'
+            : <div className="not-found">PRODUCTS NOT FOUND</div>
         }
       </div>
   );
