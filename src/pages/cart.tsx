@@ -1,5 +1,5 @@
-import CartProducts from '../components/cart-products/cart-products';
-import CartSummary from '../components/cart-summary/cart-summary';
+import CartProducts from '../components/CartProducts/CartProducts';
+import CartSummary from '../components/CartSummary/CartSummary';
 import './cart.scss';
 import { useCart } from '../contexts/cart/cartContext';
 
