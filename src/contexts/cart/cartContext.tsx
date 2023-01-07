@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useState } from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { IProduct, IProductCart } from '../../interfaces/products';
 
 interface ICartProviderProps {
@@ -51,7 +51,27 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
     })
   }
 
+
+	function setLocalStorage() {
+		localStorage.setItem('cart', JSON.stringify(cart))
+	}
+
+	function getLocalStorage() {
+		if(localStorage.getItem('cart')) {
+			setCart(JSON.parse(localStorage.getItem('cart') as string))
+		}
+	}
 	
+	useEffect(() => {
+		getLocalStorage()
+	}, [])
+
+
+	useEffect(() => {
+		setLocalStorage()
+	}, [cart])
+
+
   
   return (
     <CartContext.Provider value={{
