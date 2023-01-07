@@ -11,7 +11,7 @@ export default function CartPage() {
    const [redirect, setRedirect] = useState(false);
 
    return (
-      <div className="cart__container">
+      <main className="cart__container">
          <CartProducts />
          <CartSummary modal={setModal} />
          {modal && (
@@ -23,6 +23,6 @@ export default function CartPage() {
                )}
             </Modal>
          )}
-      </div>
+      </main>
    );
 }
