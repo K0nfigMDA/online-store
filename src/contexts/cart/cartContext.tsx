@@ -75,6 +75,7 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
 
 	useEffect(() => {
 		setLocalStorage()
+// eslint-disable-next-line
 	}, [cart])
 
 

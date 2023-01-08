@@ -48,6 +48,7 @@ export default function CartProducts() {
       if (pageNum > pages) {
          setPageNum((prev) => prev - 1);
       }
+			// eslint-disable-next-line
    }, [cart]);
 
    useEffect(() => {
@@ -57,6 +58,7 @@ export default function CartProducts() {
          setPageNum(newPageNum);
          fillParams(pageNumParam, newPageNum.toString());
       }
+			// eslint-disable-next-line
    }, [itemsAmount]);
 
    useEffect(() => {

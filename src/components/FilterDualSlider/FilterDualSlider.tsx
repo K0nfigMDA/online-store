@@ -27,6 +27,7 @@ export default function FilterDualSlider({ filterName }: IFilterDualSliderProps)
       setMinVal(0);
       setMaxVal(items.length - 1);
     }
+		// eslint-disable-next-line
   }, [filteredProducts])
   
   const isPrice = filterName === FILTERS.price; 

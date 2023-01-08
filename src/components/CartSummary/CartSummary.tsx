@@ -58,6 +58,7 @@ export default function CartSummary({modal}:CartSummaryProps) {
 
 	useEffect(() => {
 		setLocalStorage()
+		// eslint-disable-next-line
 	}, [applyPromo])
 
 	

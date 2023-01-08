@@ -16,6 +16,7 @@ export default function ModalRedirect({ redirect }: ModalProps) {
          redirect(false);
          navigate('/', { replace: true });
       }, 5000);
+			// eslint-disable-next-line
    }, []);
 
    return (
