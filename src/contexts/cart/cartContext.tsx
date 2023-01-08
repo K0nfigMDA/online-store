@@ -52,11 +52,11 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
   }
 
 
-	function setLocalStorage() {
+	 function setLocalStorage() {
 		localStorage.setItem('cart', JSON.stringify(cart))
 	}
 
-	function getLocalStorage() {
+	 function getLocalStorage() {
 		if(localStorage.getItem('cart')) {
 			setCart(JSON.parse(localStorage.getItem('cart') as string))
 		}
