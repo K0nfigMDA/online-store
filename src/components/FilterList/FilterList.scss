@@ -4,12 +4,13 @@
   border-radius: 0.5rem;
   overflow: hidden;
   margin-bottom: 5%;
+  background: rgba(76,74,65,.4);
 }
 
 .filter-title {
   text-align: center;
   background-color: #181a1c;
-  color: white;
+  color: orange;
   border-bottom: 1px solid orange;
 }
 
@@ -17,19 +18,4 @@
   max-height: 10rem;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.checkbox-line {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  color: #f8cc7b;
-
-  span {
-    margin-left: auto;
-  }
-}
-
-.item-not-active {
-  color: #968566;
 }

@@ -3,7 +3,6 @@
   min-height: 100px;
   border: 1px solid orange;
   border-radius: 0.5rem;
-  color: white;
   overflow: hidden;
   margin: 1%;
   box-sizing: border-box;
@@ -26,15 +25,39 @@
   }
 
   .item-info-list {
+    width: fit-content;
     background-color: #4d2f14f2;
+    padding: 2%;
+    color: wheat;
+    border-radius: 0 0 0.4rem;
+    border-bottom: 1px solid orange;
+    border-right: 1px solid orange;
+    font-size: 0.7em;
+
+    span {
+      color: #bb954e;
+    }
   }
+}
+
+.item-info {
+  height: 80%;
 }
 
 .big-item {
   flex: 0 0 23%;
+  min-height: 164px;
 }
 
 .in-cart {
   box-shadow: 0 0 5px 2px #c45f07;
   border: 1px solid rgb(235,68,68);
+}
+
+.item-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2%;
+  font-size: 65%;
 }

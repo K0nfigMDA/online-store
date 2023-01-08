@@ -1,3 +1,4 @@
+import './FiltersContainer.scss';
 import { useSearchParams } from "react-router-dom";
 import { FILTERS } from "../../constants/filters";
 import FilterDualSlider from "../FilterDualSlider/FilterDualSlider";

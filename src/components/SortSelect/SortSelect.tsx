@@ -1,3 +1,4 @@
+import './SortSelect.scss';
 import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { sortOption, SORT_OPTIONS, SORT_PARAM, SORT_TITLE } from "../../constants/sort";

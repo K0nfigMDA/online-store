@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  background-image: url('./assets/img/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: orange;
+}
+
+main {
+  min-height: 83vh;
+  padding: 2%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.button {
+  outline: none;
+  background-color: #181a1c;
+  border: 1px solid orange;
+  border-radius: 0.3rem;
+  padding: 0.1em 0.2em;
+  font-size: 110%;
+  cursor: pointer;
+  color: orange;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #181a1c;
+  border-radius: 20px;
+  border: 2px solid orange;
+}
+
+::-webkit-scrollbar-track {
+  background: orange;
+}

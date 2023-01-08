@@ -1,3 +1,4 @@
+import './FilterItem.scss';
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/products/productsContext";
 import { countProducts } from "../../helpers/products";

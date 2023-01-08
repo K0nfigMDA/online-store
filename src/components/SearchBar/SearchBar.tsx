@@ -1,3 +1,4 @@
+import './SearchBar.scss';
 import { FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SEARCH_PARAM } from "../../constants/search";
