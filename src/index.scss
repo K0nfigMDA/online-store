@@ -26,12 +26,12 @@ main {
 }
 
 .button {
+  outline: none;
   background-color: #181a1c;
   border: 1px solid orange;
   border-radius: 0.3rem;
-  padding-left: 2%;
-  padding-right: 2%;
-  font-size: 120%;
+  padding: 0.1em 0.2em;
+  font-size: 110%;
   cursor: pointer;
   color: orange;
 }

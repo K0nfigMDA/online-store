@@ -33,12 +33,12 @@ export default function Product({ product }: IProductProps) {
           <div className="item-title">{ product.title }</div>
             {viewMode && <div className="item-info">
               <ul className="item-info-list">
-                <li>Category: {product.category}</li>
-                <li>Brand: {product.brand}</li>
-                <li>Price: €{product.price}</li>
-                <li>Discount: {product.discountPercentage}%</li>
-                <li>Rating: {product.rating}</li>
-                <li>Stock: {product.stock}</li>
+                <li><span>Category: </span>{product.category}</li>
+                <li><span>Brand: </span>{product.brand}</li>
+                <li><span>Price: </span>€{product.price}</li>
+                <li><span>Discount: </span>{product.discountPercentage}%</li>
+                <li><span>Rating: </span>{product.rating}</li>
+                <li><span>Stock: </span>{product.stock}</li>
               </ul>
             </div>
             }
