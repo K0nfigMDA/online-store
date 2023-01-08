@@ -21,7 +21,7 @@ export default function ProductDetails() {
               &gt;&gt;
               <Link to={`/?brand=${product.brand}`}><span>{product.brand.toUpperCase()}</span></Link>
               &gt;&gt;
-              <span>{product.title.toUpperCase()}</span>
+              <a>{product.title.toUpperCase()}</a>
             </div>
             <div className="product-details">
               <div className="product-title">{product?.title}</div>
