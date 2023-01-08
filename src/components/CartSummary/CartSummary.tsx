@@ -46,7 +46,7 @@ export default function CartSummary({modal}:CartSummaryProps) {
 	}
 
 	 function getLocalStorage() {
-		if(localStorage.getItem('cart')) {
+		if(localStorage.getItem('cartpromo')) {
 			setApplyPromo(JSON.parse(localStorage.getItem('cartpromo') as string))
 		}
 	}
