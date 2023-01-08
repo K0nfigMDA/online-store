@@ -5,9 +5,11 @@ import { IPromocode, promocodes } from '../../constants/promo';
 import { FormEvent, useEffect, useState } from 'react';
 import CartPromo from '../CartPromo/CartPromo';
 
+interface CartSummaryProps {
+	modal: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-
-export default function CartSummary() {
+export default function CartSummary({modal}:CartSummaryProps) {
    const { cart } = useCart();
 	 const [promoTip, setPromoTip] = useState<IPromocode | null>(null)
 	 const [applyPromo, setApplyPromo] = useState<IPromocode[]>([])
@@ -74,7 +76,7 @@ export default function CartSummary() {
 						{!btnAdd && <button onClick={addPromo}>Add</button>}
 						</div> }
 						<div className='summary__tip'>Promo for test: 'RS', 'EPM', 'KOZ', 'DZEK'</div>
-            <button className="summary__btn">Buy now</button>
+            <button onClick={() => modal(true)} className='summary__btn'>Buy now</button>
          </div>
       </div>
    );
