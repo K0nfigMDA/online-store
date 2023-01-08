@@ -10,13 +10,15 @@ interface ICartContext {
   addToCart: (product: IProduct) => void;
   removeFromCart: (product: IProduct) => void;
 	removeItemFromCart: (product: IProduct) => void;
+	cleanCart:() => void
 }
 
 const CartContext = React.createContext<ICartContext>({
   cart: [], 
   addToCart: () => console.error('NoProviderValue'),
   removeFromCart: () => console.error('NoProviderValue'),
-	removeItemFromCart: () => console.error('NoProviderValue')
+	removeItemFromCart: () => console.error('NoProviderValue'),
+	cleanCart: () => console.error('NoProviderValue')
 });
 
 export const useCart = () => {
@@ -62,6 +64,10 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
 		}
 	}
 	
+	const cleanCart = () => {
+		setCart([]) 
+	}
+	
 	useEffect(() => {
 		getLocalStorage()
 	}, [])
@@ -79,6 +85,7 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
       addToCart,
       removeFromCart,
 			removeItemFromCart,
+			cleanCart,
     }}>
       {children}
     </CartContext.Provider>
