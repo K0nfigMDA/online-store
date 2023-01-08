@@ -23,8 +23,13 @@
 	flex-direction: column;
 	align-items: center;
 }
-.summary__products-amount{}
-.summary__total-priсe{}
+.summary__total-priсe{
+	
+	&._active {
+		text-decoration: line-through;
+	}
+}
+
 .summary__promo{
 	background-color: #181a1c;
 	width: 70%;

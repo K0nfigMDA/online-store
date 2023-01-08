@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom'
 import { useCart } from '../../contexts/cart/cartContext';
+import { cartQuantity, cartSum } from '../../helpers/cart';
 import './Header.scss'
 
 function Header() {
 	const { cart } = useCart();
 
-	const cartSum = () => cart.reduce((acc, el) => acc + el.quantity * el.price, 0);
-	const cartQuantity = () => cart.reduce((acc, el) => acc + el.quantity, 0);
+	
 
   return (
 		<header className='header'>
@@ -16,12 +16,12 @@ function Header() {
 			</div>
 			</Link>
 			<div className='header__cart-total'>
-				Cart total: € {cartSum()}
+				Cart total: € {cartSum(cart, 0)}
 			</div>
 			<div className='header__cart-img'>
 				<Link to={"/cart"}>
 				<div className='header__cart-number'>
-					{cartQuantity()}
+					{cartQuantity(cart)}
 				</div>
 				</Link>
 			</div>
