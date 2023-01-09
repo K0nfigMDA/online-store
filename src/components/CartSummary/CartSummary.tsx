@@ -44,11 +44,17 @@ export default function CartSummary({ modal }: CartSummaryProps) {
       localStorage.setItem('cartpromo', JSON.stringify(applyPromo));
    }
 
-   function getLocalStorage() {
-      if (localStorage.getItem('cart')) {
-         setApplyPromo(JSON.parse(localStorage.getItem('cartpromo') as string));
-      }
-   }
+
+	 function getLocalStorage() {
+		if(localStorage.getItem('cartpromo')) {
+			setApplyPromo(JSON.parse(localStorage.getItem('cartpromo') as string))
+		}
+	}
+	
+	useEffect(() => {
+		getLocalStorage()
+	}, [])
+
 
    useEffect(() => {
       getLocalStorage();
