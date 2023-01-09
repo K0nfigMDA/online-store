@@ -15,10 +15,10 @@ export default function CartPage() {
    return (
       <main className="cart__container">
          {cart.length ? (
-            <>
+            <div className="cart__content">
                <CartProducts />
                <CartSummary modal={setModal} />
-            </>
+            </div>
          ) : (
             <div className="empty-card">Cart is Empty</div>
          )}
