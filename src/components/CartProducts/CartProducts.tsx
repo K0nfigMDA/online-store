@@ -48,7 +48,7 @@ export default function CartProducts() {
       if (pageNum > pages) {
          setPageNum((prev) => prev - 1);
       }
-			// eslint-disable-next-line
+      // eslint-disable-next-line
    }, [cart]);
 
    useEffect(() => {
@@ -58,7 +58,7 @@ export default function CartProducts() {
          setPageNum(newPageNum);
          fillParams(pageNumParam, newPageNum.toString());
       }
-			// eslint-disable-next-line
+      // eslint-disable-next-line
    }, [itemsAmount]);
 
    useEffect(() => {
@@ -73,10 +73,10 @@ export default function CartProducts() {
    return (
       <div className="cart__products">
          <div className="products__head _head">
-            <div className="head__title">Products in Cart</div>
+            <h2 className="head__title">Products in Cart</h2>
             <div className="head__controls">
                <div className="head__items _items">
-                  <div className="items__text">Items:</div>
+                  LIMIT:
                   <input
                      onInput={changeItemsAmount}
                      className="Items__amount"
@@ -85,14 +85,14 @@ export default function CartProducts() {
                   />
                </div>
                <div className="head__controls-panel _controls-panel">
-                  <div className="controls-panel__text">Page: </div>
+                  PAGE:
                   <button
                      onClick={decreasePageNum}
                      className="controls-panel__less-btn"
                   >
                      {'<'}
                   </button>
-                  <div className="controls-panel__amount">{pageNum}</div>
+                  <span className="controls-panel__amount">{pageNum}</span>
                   <button
                      onClick={increasePageNum}
                      className="controls-panel__more-btn"

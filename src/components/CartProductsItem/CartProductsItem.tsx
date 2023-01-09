@@ -28,26 +28,39 @@ export default function CartProductsItem({
    return (
       <div className="products__item">
          <div className="item__num">{num}</div>
-         <img src={product.thumbnail} alt="product" className="item__image" />
          <div className="item__content _content">
-            <div className="content__title">{product.title}</div>
-            <div className="content__info">{product.description}</div>
-            <div className="content__rating-discount">
-               <div className="content__rating">{product.rating}</div>
-               <div className="content__discount">
-                  {product.discountPercentage}
+            <img
+               src={product.thumbnail}
+               alt="product"
+               className="item__image"
+            />
+            <div className="content__details">
+               <div className="content__title">
+                  <h3>{product.title}</h3>
+               </div>
+               <div className="content__info">{product.description}</div>
+               <div className="content__rating-discount">
+                  <div className="content__rating _rd">
+                     Rating: {product.rating}
+                  </div>
+                  <div className="content__discount _rd">
+                     Discount: {product.discountPercentage}
+                  </div>
                </div>
             </div>
          </div>
          <div className="item__controls-panel _controls">
             <div className="controls__stock-amount">Stock:{product.stock}</div>
             <div className="controls__cart-amount">
-               <button className="controls__plus-btn" onClick={() => addItem()}>
+               <button
+                  className="controls__plus-btn _pm"
+                  onClick={() => addItem()}
+               >
                   +
                </button>
-               <div className="controls__amount-num">{product.quantity}</div>
+               {product.quantity}
                <button
-                  className="controls__minus-btn"
+                  className="controls__minus-btn _pm"
                   onClick={() => removeItem()}
                >
                   -
