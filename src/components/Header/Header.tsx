@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
 import { useCart } from '../../contexts/cart/cartContext';
 import { cartQuantity, cartSum } from '../../helpers/cart';
 import './Header.scss';
@@ -8,7 +9,7 @@ function Header() {
 
    return (
       <header className="header">
-         <Link to={'/'}>
+         <Link to={ROUTES.ROOT}>
             <div className="header__logo">
                <div className="header__logo-img"></div>
                <span>Online Store</span>
@@ -18,7 +19,7 @@ function Header() {
             Cart total: € {cartSum(cart, 0)}
          </div>
          <div className="header__cart-img">
-            <Link to={'/cart'}>
+            <Link to={ROUTES.CART}>
                <div className="header__cart-number">{cartQuantity(cart)}</div>
             </Link>
          </div>

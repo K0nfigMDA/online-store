@@ -1,7 +1,7 @@
 import { useProducts } from "../../contexts/products/productsContext";
-import SearchBar from "../SearchBar/SearchBar";
-import SortSelect from "../SortSelect/SortSelect";
-import ViewModeSwitch from "../ViewModeSwitch/ViewModeSwitch";
+import SearchBar from "../SearchBar";
+import SortSelect from "../SortSelect";
+import ViewModeSwitch from "../ViewModeSwitch";
 import './ControlPanel.scss';
 
 

@@ -20,7 +20,7 @@ export default function Product({ product }: IProductProps) {
 
   const param = searchParams.get(VIEW_PARAM);
   const viewMode = param 
-    ? (param === VIEW_OPTIONS[1]
+    ? (param === VIEW_OPTIONS.FALSE
         ? false
         : true) 
     : true;

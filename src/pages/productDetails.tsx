@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import ProductCartButton from "../components/ProductCartButton/ProductCartButton";
-import ProductDetailsPhotos from "../components/ProductDetailsPhotos/ProductDetailsPhotos";
+import ProductCartButton from "../components/ProductCartButton";
+import ProductDetailsPhotos from "../components/ProductDetailsPhotos";
 import { useProducts } from "../contexts/products/productsContext";
 import './productDetails.scss';
 

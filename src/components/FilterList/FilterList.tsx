@@ -2,7 +2,7 @@ import { FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/products/productsContext";
 import { IProduct } from "../../interfaces/products";
-import FilterItem from "../FilterItem/FilterItem";
+import FilterItem from "../FilterItem";
 import './FilterList.scss';
 
 interface IFilterListProps {

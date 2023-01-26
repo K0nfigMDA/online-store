@@ -1,4 +1,4 @@
-import Product from "../Product/Product";
+import Product from "../Product";
 import { useProducts } from "../../contexts/products/productsContext";
 import './ProductsContainer.scss';
 

@@ -11,14 +11,9 @@ export default function SearchBar() {
     const target = e.target as HTMLInputElement;
     const value = target.value;
     const params = searchParams;
-    if (!value) {
-      params.delete(SEARCH_PARAM);
-      setSearchParams(params);
-    }
-    if (value) {
-      params.set(SEARCH_PARAM, value);
-      setSearchParams(params);
-    }
+
+    value ? params.set(SEARCH_PARAM, value) : params.delete(SEARCH_PARAM);
+    setSearchParams(params);
   }
 
   return (
