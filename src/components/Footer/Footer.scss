@@ -1,0 +1,50 @@
+.footer {
+   min-height: 7vh;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #181a1c;
+   color: orange;
+
+   padding-right: 10px;
+   border-top: 2px solid orange;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   padding-left: 30px;
+   padding-right: 30px;
+}
+
+.footer__git-links {
+   display: flex;
+   gap: 20px;
+}
+
+.footer__git-img {
+   width: 30px;
+   height: 30px;
+   box-shadow: 0 0 5px rgba(184, 24, 24, 0.5), 0 0 5px rgba(184, 24, 24, 0.5),
+      0 0 5px rgba(184, 24, 24, 0.5), 0 0 5px rgba(184, 24, 24, 0.5);
+   border-radius: 50%;
+   transition: 0.1s;
+}
+
+.footer__rs-img {
+   height: 30px;
+   width: 30px;
+   box-shadow: 0 0 5px rgba(184, 24, 24, 0.5), 0 0 5px rgba(184, 24, 24, 0.5),
+      0 0 5px rgba(184, 24, 24, 0.5), 0 0 5px rgba(184, 24, 24, 0.5);
+   border-radius: 50%;
+   transition: 0.1s;
+}
+
+._hover:hover {
+   box-shadow: 0 0 10px rgba(184, 24, 24, 0.5), 0 0 20px rgba(184, 24, 24, 0.5),
+      0 0 30px rgba(184, 24, 24, 0.5), 0 0 40px rgba(184, 24, 24, 0.5);
+   border-radius: 50%;
+   transition: 0.1s;
+}
+
+.footer__year {
+   font-size: 20px;
+   text-shadow: 0 0 10px rgb(88 68 68), 0 0 5px red, 0 0 10px red, 0 0 15px red;
+}

@@ -1,0 +1,112 @@
+.products__item {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   height: 7rem;
+   width: 100%;
+   border-bottom: 1px solid orange;
+   padding: 5px;
+}
+
+.item__num {
+   width: 30px;
+   height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid orange;
+   border-radius: 50%;
+   background-color: #181a1c;
+}
+
+.item__image {
+   width: 20%;
+   height: 100%;
+   border-radius: 0.5rem;
+   border: 0.2px solid orange;
+}
+
+.content__details {
+   width: 80%;
+   height: 100%;
+   padding: 1%;
+}
+
+.item__content {
+   width: 75%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+}
+
+.content__title {
+   color: wheat;
+   font-size: calc(0.2rem + 1vw);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-shadow: 0 0 5px rgb(88 68 68), 0 0 2px rgb(88 19 19),
+      0 0 3px rgb(164 45 45), 0 0 5px rgb(150 33 33);
+   border-bottom: 1px solid wheat;
+}
+
+.content__info {
+   padding-top: 1%;
+   color: wheat;
+   font-size: 80%;
+   text-align: center;
+}
+.content__rating-discount {
+   padding-top: 1%;
+   display: flex;
+   align-items: end;
+   justify-content: space-around;
+}
+
+._rd {
+   color: #d2b06f;
+   font-size: 80%;
+}
+
+.item__controls-panel {
+   width: 15%;
+}
+.controls__stock-amount {
+   display: flex;
+   color: #d2b06f;
+   align-items: center;
+   justify-content: center;
+   margin: 7%;
+   font-size: calc(0.2rem + 1vw);
+}
+.controls__cart-amount {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 150%;
+}
+._pm {
+   width: 40px;
+   height: 40px;
+   background-color: #181a1c;
+   border-radius: 50%;
+   font-size: 35px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: none;
+   cursor: pointer;
+   border: 1px solid orange;
+   color: orange;
+   transition: 0.1s;
+}
+
+.controls__price {
+   display: flex;
+   color: #d2b06f;
+   align-items: center;
+   justify-content: center;
+   margin: 7%;
+   font-size: calc(0.2rem + 1vw);
+}

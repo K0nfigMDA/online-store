@@ -1,0 +1,75 @@
+import './CartProductsItem.scss';
+import { useCart } from '../../contexts/cart/cartContext';
+import { IProductCart } from '../../interfaces/products';
+
+interface CartProductsItemProps {
+   product: IProductCart;
+   num: number;
+}
+
+export default function CartProductsItem({
+   product,
+   num,
+}: CartProductsItemProps) {
+   const { removeFromCart, addToCart, removeItemFromCart } = useCart();
+
+   function addItem() {
+      if (product.quantity < product.stock) {
+         addToCart(product);
+      }
+   }
+
+   function removeItem() {
+      if (product.quantity > 1) {
+         removeItemFromCart(product);
+      } else removeFromCart(product);
+   }
+
+   return (
+      <div className="products__item">
+         <div className="item__num">{num}</div>
+         <div className="item__content _content">
+            <img
+               src={product.thumbnail}
+               alt="product"
+               className="item__image"
+            />
+            <div className="content__details">
+               <div className="content__title">
+                  <h3>{product.title}</h3>
+               </div>
+               <div className="content__info">{product.description}</div>
+               <div className="content__rating-discount">
+                  <div className="content__rating _rd">
+                     Rating: {product.rating}
+                  </div>
+                  <div className="content__discount _rd">
+                     Discount: {product.discountPercentage}
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div className="item__controls-panel _controls">
+            <div className="controls__stock-amount">Stock:{product.stock}</div>
+            <div className="controls__cart-amount">
+               <button
+                  className="controls__plus-btn _pm"
+                  onClick={() => addItem()}
+               >
+                  +
+               </button>
+               {product.quantity}
+               <button
+                  className="controls__minus-btn _pm"
+                  onClick={() => removeItem()}
+               >
+                  -
+               </button>
+            </div>
+            <div className="controls__price">
+               €{product.quantity * product.price}
+            </div>
+         </div>
+      </div>
+   );
+}

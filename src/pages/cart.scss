@@ -1,0 +1,18 @@
+.cart__container {
+   min-height: 85vh;
+   width: 100%;
+   padding: 2%;
+   display: flex;
+   justify-content: center;
+}
+
+.cart__content {
+   width: 95%;
+   display: flex;
+   justify-content: space-between;
+}
+
+.empty-card {
+   font-size: 20px;
+   color: orange;
+}

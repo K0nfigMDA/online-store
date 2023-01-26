@@ -1,0 +1,21 @@
+
+.filter-list {
+  border: 1px solid orange;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 5%;
+  background: rgba(76,74,65,.4);
+}
+
+.filter-title {
+  text-align: center;
+  background-color: #181a1c;
+  color: orange;
+  border-bottom: 1px solid orange;
+}
+
+.filter-list__items {
+  max-height: 10rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

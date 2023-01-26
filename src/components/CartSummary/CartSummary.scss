@@ -1,0 +1,99 @@
+.cart__summary {
+   width: 29%;
+   border: 1px solid orange;
+   overflow: hidden;
+   border-radius: 0.5rem;
+   background-color: #1e1b1b80;
+   height: fit-content;
+}
+.summary__head {
+   text-align: center;
+   font-size: 150%;
+   background-color: #181a1c;
+   padding: 0.3rem;
+   border-bottom: 1px solid orange;
+}
+
+.summary__products-amount {
+   width: 90%;
+   font-size: 180%;
+   color: wheat;
+   text-align: center;
+   margin: 4%;
+}
+
+._sp {
+   font-size: 100%;
+   color: orange;
+}
+
+._euro {
+   color: wheat;
+}
+
+.summary__total-priсe {
+   width: 90%;
+   font-size: 180%;
+   color: wheat;
+   text-align: center;
+   margin: 4%;
+   &._active {
+      text-decoration: line-through;
+   }
+}
+.summary-rpomo__container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.summary__promo {
+   background-color: #181a1c;
+   width: 70%;
+   border: 1px solid orange;
+   color: orange;
+   border-radius: 2rem;
+   padding: 0.4rem;
+   text-align: center;
+   outline: none;
+   font-size: 120%;
+}
+
+.summary__promo-tip {
+   color: wheat;
+   margin-top: 3%;
+   text-align: center;
+   font-size: 120%;
+}
+
+.promo-tip__btn {
+   color: wheat;
+   background-color: #181a1c;
+   border: 1px solid orange;
+   border-radius: 0.3rem;
+   padding: 1%;
+   cursor: pointer;
+   font-size: 90%;
+   margin-left: 2px;
+}
+
+.summary__btn {
+   font-size: 120%;
+   display: block;
+   padding: 2% 0;
+   background: #9a3535;
+   color: wheat;
+   border: 2px solid orange;
+   border-radius: 0.3rem;
+   cursor: pointer;
+   width: 50%;
+   margin: 3rem auto 1rem;
+}
+
+.summary__tip {
+   display: block;
+   margin: 3% auto;
+   text-align: center;
+   color: #e38383;
+   font-size: 100%;
+}
